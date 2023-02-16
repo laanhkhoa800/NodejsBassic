@@ -46,6 +46,23 @@
             <%= text %>
           </div>
       </div>
-    
+      <div class="create-detail-user">
+        <div>Form create new user</div>
+            <div class="form-detail">   
+                <form action="/create" method="POST">
+                    <label>LastName</label> 
+                    <input type="text" placeholder="Enter last name of you" name="lastName"/>         
+                    <label>first</label> 
+                    <input type="text" placeholder="Enter first name of you" name="firstName"/>           
+                    <label>email</label> 
+                    <input type="email" placeholder="Enter email  of you" name="email"/>    
+                    <label>adress</label>   
+                    <input type="text" placeholder="Enter adress of you" name="address"/>  
+                    <div>
+                        <button type="submit" class="btn_Create"> Submit</button>
+                    </div>   
+                </form>                     
+            </div>
+      </div>
 </body>
 </html>
