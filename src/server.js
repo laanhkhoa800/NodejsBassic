@@ -1,9 +1,11 @@
-import initWebRoute from './route/web'
-const express = require('express')
-const path = require('path');
+import initWebRoute from './route/web';
+import configViewEngine from './config/viewEngine';
+import connection from './config/connectDB';
+
 require('dotenv').config();
 
-import configViewEngine from './config/viewEngine';
+const express = require('express')
+const path = require('path');
 
 const app = express()
 const port = process.env.PORT || 8080;

@@ -6,9 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-    <h1>Hello nodejs there is page 1</h1>
-    <img src="/image/imageNodejs.jpg" class="imageIndex">
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="news">News</a>
+        <a href="contact">Contact</a>
+        <a href="about">About</a>
+      </div>
+    
+      <div style="padding-left:16px">
+        <h2>LIST DATA TABLE</h2>
+        <div class="w3-container">        
+            <table class="w3-table-all">
+                <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th class="w3-right-align">Address</th>
+                        <th>function</th>
+                      </tr>
+                      <% for(let i = 0; i < data.length; i++) { %>
+                        <tr>
+                            <td> <%= data[i].ID  %></td>
+                            <td> <%= data[i].lastName %></td>
+                            <td> <%= data[i].firstName %></td>
+                            <td class="w3-right-align"><td> <%= data[i].address %></td></td>
+                            <td> 
+                                <a type="button" href="/detail/user/<%= data[i].id %>" target="_blank"> <button type="button">Detail</button></a>
+                                <a type="button" href="/edit/<%= data[i].id %>" target="_blank"> <button type="button">Edit</button></a>
+                                <a type="button" href="/delete/<%= data[i].id %>" target="_blank"> <button type="button">Delete</button></a>
+                            </td>
+                          </tr>
+                      <% } %>
+                </tbody>
+            </table>
+            <%= text %>
+          </div>
+      </div>
+    
 </body>
 </html>
