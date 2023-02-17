@@ -1,4 +1,5 @@
 import initWebRoute from './route/web';
+import initApiRoute from './route/api';
 import configViewEngine from './config/viewEngine';
 import connection from './config/connectDB';
 
@@ -19,6 +20,8 @@ configViewEngine(app);
 
 //init web route
 initWebRoute(app);
+//init api route
+initApiRoute(app);
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)

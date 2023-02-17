@@ -1,6 +1,5 @@
 import  express  from "express";
 import homeController from '../controller/homeController';
-
 let router = express.Router();
 
 // setup router url of UI
