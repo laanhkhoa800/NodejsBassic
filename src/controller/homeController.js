@@ -22,8 +22,34 @@ let createNewUser = async (req, res) => {
     return res.redirect('/');
 }
 
+let deleteUser = async (req, res) => {
+    let userID = req.params.id;
+    console.log("id user want delete : ", [userID]);
+    await pool.execute(`DELETE FROM users WHERE id = ?`, [userID]);
+    return res.redirect('/');
+}
+
+let getDataUserToEdit = async (req, res) => {
+    let userID = req.params.id;
+    let [dataUser] = await pool.execute(`select * from users where id = ?`, [userID]);
+    console.log('loading data', dataUser );
+    return res.render('edit.ejs', {data : dataUser[0]});
+}
+
+let updateUser = async (req, res) => {
+    console.log('Update user :', req.body);
+    let { firstName, lastName, email, address, id } = req.body
+    await pool.execute(`UPDATE users SET firstName = ?, lastName = ?, email = ?, address = ? WHERE id = ?;`, [firstName, lastName, email, address, id]);
+    return res.redirect('/');
+
+}
+
+
 module.exports = {
     getHomepage,
     getDetailPage,
-    createNewUser
+    createNewUser,
+    deleteUser,
+    getDataUserToEdit,
+    updateUser
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Manage User</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -34,10 +34,13 @@
                             <td> <%= data[i].lastName %></td>
                             <td> <%= data[i].firstName %></td>
                             <td class="w3-right-align"><td> <%= data[i].address %></td></td>
-                            <td> 
+                            <td style="display: inline;"> 
                                 <a type="button" href="/detail/user/<%= data[i].id %>" target="_blank"> <button type="button">Detail</button></a>
-                                <a type="button" href="/edit/<%= data[i].id %>" target="_blank"> <button type="button">Edit</button></a>
-                                <a type="button" href="/delete/<%= data[i].id %>" target="_blank"> <button type="button">Delete</button></a>
+                                <a type="button" href="/edit/user/<%= data[i].id %>" target="_blank"> <button type="button">Edit</button></a>
+                                <a type="button" href="/delete/user/<%= data[i].id %>" target="_blank"> <button type="button">Delete</button></a>
+                                <!-- <form action="/delete/user/<%= data[i].id %>" method="POST">
+                                    <button type="button">Delete</button>
+                                </form> -->
                             </td>
                           </tr>
                       <% } %>
@@ -51,7 +54,7 @@
             <div class="form-detail">   
                 <form action="/create" method="POST">
                     <label>LastName</label> 
-                    <input type="text" placeholder="Enter last name of you" name="lastName"/>         
+                    <input type="text" placeholder="Enter last name of you"  name="lastName"/>         
                     <label>first</label> 
                     <input type="text" placeholder="Enter first name of you" name="firstName"/>           
                     <label>email</label> 
@@ -65,4 +68,4 @@
             </div>
       </div>
 </body>
-</html>
+</html> 
