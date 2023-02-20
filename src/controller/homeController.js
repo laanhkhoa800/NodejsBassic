@@ -1,6 +1,5 @@
 import pool from "../config/connectDB";
-import {body, validationResult} from 'express-validator';
-import mysql from 'mysql2/promise';
+import {body, Result, validationResult} from 'express-validator';
 
 let getHomepage = async (req, res) => {
     
@@ -53,11 +52,62 @@ let updateUser = async (req, res) => {
 }
 
 
+// Upload file 
+let getUploadFile = async (req, res) => {
+    return res.render('uploadfile.ejs');
+}
+
+//Upload single image with multer
+let handleUpLoadFile = async (req, res) => {
+        console.log("check name display err image",req.files);
+        // req.file contains information of uploaded file
+        // req.body contains information of text fields, if there were any
+        if (req.fileValidationError) {
+            return res.send(req.fileValidationError);
+        }
+        else if (!req.file) {
+            return res.send('Please select an image to upload');
+        }
+        // else if (err instanceof multer.MulterError) {
+        //     return res.send(err);
+        // }
+        // else if (err) {
+        //     return res.send(err);
+        // }
+        // Display uploaded image for user validation
+        res.send(`You have uploaded this image: <hr/><img src="/image/${req.file.filename}" width="500"/><hr /><a href="./">Upload another image</a>`);
+}
+
+
+//upload mutiple file 
+let handleUploadMutipleFile = async (req, res, err) => {
+        console.log("check error : ", err);
+        // req.file contains information of uploaded file
+        // req.body contains information of text fields, if there were any
+        if (req.fileValidationError) {
+            return res.send(req.fileValidationError);
+        }
+        else if (!req.files) {
+            return res.send('Please select an image to upload');
+        }
+        const files = req.files
+        let index, len;
+        let result = 'You have uploaded this image:';
+        for (index = 0, len = files.length; index < len; ++index) {
+            result += `<img src="/image/${files[index].filename}" width="500"/>`
+        }
+        // Display uploaded image for user validation
+        res.send(result);
+}
+
 module.exports = {
     getHomepage,
     getDetailPage,
     createNewUser,
     deleteUser,
     getDataUserToEdit,
-    updateUser
+    updateUser,
+    getUploadFile,
+    handleUpLoadFile,
+    handleUploadMutipleFile
 }
